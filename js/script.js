@@ -3,8 +3,10 @@ $(document).ready(function () {
 		speed: 1200,
 		adaptiveHeight: false,
 		adaptiveWidth: true,
-		prevArrow: '<button type="button" class="slick-prev"><img src="icons/chevron-left.svg"></button>',
-		nextArrow: '<button type="button" class="slick-next"><img src="icons/chevron-right.svg"></button>',
+		autoplay: true,
+		autoplaySpeed: 1000,
+		prevArrow: '<button type="button" class="slick-prev"><img src="icons/left.png"></button>',
+		nextArrow: '<button type="button" class="slick-next"><img src="icons/right.png"></button>',
 
 
 		slidesToShow: 1,
@@ -25,7 +27,7 @@ $(document).ready(function () {
 					slidesToShow: 1,
 					slidesToScroll: 1,
 					arrows: false,
-					dots: true
+					dots: false
 				}
 			},
 			{
@@ -34,15 +36,12 @@ $(document).ready(function () {
 					slidesToShow: 1,
 					slidesToScroll: 1,
 					arrows: false,
-					dots: true
+					dots: false
 				}
 			}
 
 		]
 	});
-
-	// в самой первой строке скрипта указываем название табов с точкой перед ними,а дальше пишем без точек
-	// этот скрипт для переключения между тримя кнопками над табами
 
 	$('ul.catalog__tabs').on('click', 'li:not(.catalog__tab_active)', function () {
 		$(this)
@@ -63,8 +62,7 @@ $(document).ready(function () {
 	toggleSlide('.catalog-item__link');
 	toggleSlide('.catalog-item__back');
 
-
-	// modal
+	// Modal
 
 	$('[data-modal=consultation]').on('click', function () {
 		$('.overlay, #consultation').fadeIn('slow');
@@ -80,13 +78,12 @@ $(document).ready(function () {
 		})
 	});
 
-
 	function validateForms(form) {
 		$(form).validate({
 			rules: {
 				name: {
 					required: true,
-					minlenght: 2
+					minlength: 2
 				},
 				phone: "required",
 				email: {
@@ -96,13 +93,13 @@ $(document).ready(function () {
 			},
 			messages: {
 				name: {
-					required: "пожалуйста,ввиде своё имя",
-					minlenght: jQuery.validator.format("Введите {0} символа!")
+					required: "Пожалуйста, введите свое имя",
+					minlength: jQuery.validator.format("Введите {0} символа!")
 				},
-				phone: "ввидите свой номер телефона",
+				phone: "Пожалуйста, введите свой номер телефона",
 				email: {
-					required: "введите свой почтовый адресс",
-					email: "неправильно введён адресс почты"
+					required: "Пожалуйста, введите свою почту",
+					email: "Неправильно введен адрес почты"
 				}
 			}
 		});
@@ -113,12 +110,6 @@ $(document).ready(function () {
 	validateForms('#order form');
 
 	// $('input[name=phone]').mask("+7 (999) 999-99-99");
-
-
-
-
-	// script when sending letters to mail
-
 
 	$('form').submit(function (e) {
 		e.preventDefault();
@@ -136,9 +127,7 @@ $(document).ready(function () {
 		return false;
 	});
 
-
-	//   smoth scroll and pageup
-
+	// Smooth scroll and pageup
 
 	$(window).scroll(function () {
 		if ($(this).scrollTop() > 1600) {
@@ -147,7 +136,8 @@ $(document).ready(function () {
 			$('.pageup').fadeOut();
 		}
 	});
-	$("a[href=#up]").click(function () {
+
+	$("a[href^='#']").click(function () {
 		const _href = $(this).attr("href");
 		$("html, body").animate({ scrollTop: $(_href).offset().top + "px" });
 		return false;
@@ -155,4 +145,3 @@ $(document).ready(function () {
 
 	new WOW().init();
 });
-

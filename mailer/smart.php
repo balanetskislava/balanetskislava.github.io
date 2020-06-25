@@ -17,9 +17,9 @@ $mail->Username = 'balanetski85555@gmail.com';                 // Наш лог�
 $mail->Password = 'matas2000eva';                           // Наш пароль от ящика
 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                                    // TCP port to connect to
-
-$mail->setFrom('balanetski85555@gmail.com', 'prob');   // От кого письмо 
-$mail->addAddress('negiweb467@whowlft.com');     // Add a recipient
+ 
+$mail->setFrom('balanetski85555@gmail.com', 'Pulse');   // От кого письмо 
+$mail->addAddress('balanetski85555@gmail.com');     // Add a recipient
 //$mail->addAddress('ellen@example.com');               // Name is optional
 //$mail->addReplyTo('info@example.com', 'Information');
 //$mail->addCC('cc@example.com');
